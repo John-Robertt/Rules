@@ -15,6 +15,7 @@ DOMAIN-SUFFIX,openai.nooc.ink
 DOMAIN-SUFFIX,intercom.io
 DOMAIN-SUFFIX,sentry.io
 DOMAIN-SUFFIX,identrust.com
+DOMAIN-SUFFIX,livekit.cloud
 
 # OpenAI CDN
 DOMAIN-SUFFIX,intercomcdn.com
