@@ -1,8 +1,10 @@
 # NAME: OpenAI
-# UPDATED: 2023-07-21 14:29:00
+# UPDATED: 2023-10-18 17:10:00
 
 # OpenAI Challenge & SSO
 DOMAIN-SUFFIX,auth0.com
+DOMAIN-SUFFIX,statsig.net
+DOMAIN-SUFFIX,revenuecat.com
 DOMAIN-SUFFIX,challenges.cloudflare.com
 DOMAIN-SUFFIX,client-api.arkoselabs.com
 DOMAIN-SUFFIX,events.statsigapi.net
