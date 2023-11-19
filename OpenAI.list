@@ -1,6 +1,7 @@
 # NAME: OpenAI
-# UPDATED: 2023-11-17 09:25:00
+# UPDATED: 2023-11-19 10:25:00
 
+# OpenAI
 DOMAIN-KEYWORD,openai
 DOMAIN-SUFFIX,auth0.com
 DOMAIN-SUFFIX,challenges.cloudflare.com
