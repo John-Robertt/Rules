@@ -11,22 +11,22 @@ interface_name=$1
 traffic_limit=$2
 
 # 更新包列表并安装cron服务
-sudo apt update
-sudo apt install cron -y
+apt update
+apt install cron -y
 
 # 安装依赖
-sudo apt install vnstat bc -y
+apt install vnstat bc -y
 
 # 配置vnstat
-sudo sed -i '0,/^;Interface ""/s//Interface '\"$interface_name\"'/' /etc/vnstat.conf
-sudo sed -i "0,/^;UnitMode.*/s//UnitMode 1/" /etc/vnstat.conf
-sudo sed -i "0,/^;MonthRotate.*/s//MonthRotate 1/" /etc/vnstat.conf
+sed -i '0,/^;Interface ""/s//Interface '\"$interface_name\"'/' /etc/vnstat.conf
+sed -i "0,/^;UnitMode.*/s//UnitMode 1/" /etc/vnstat.conf
+sed -i "0,/^;MonthRotate.*/s//MonthRotate 1/" /etc/vnstat.conf
 
 # 重启vnstat服务
-sudo systemctl restart vnstat
+systemctl restart vnstat
 
 # 创建自动关机脚本check.sh
-cat << EOF | sudo tee /root/check.sh > /dev/null
+cat << EOF | tee /root/check.sh > /dev/null
 #!/bin/bash
 
 # 网卡名称
@@ -57,12 +57,12 @@ fi
 
 # 比较流量是否超过阈值
 if (( \$(echo "\$CHANGE_TO_GB > \$traffic_limit" | bc -l) )); then
-    sudo /usr/sbin/shutdown -h now
+    /usr/sbin/shutdown -h now
 fi
 EOF
 
 # 授予权限
-sudo chmod +x /root/check.sh
+chmod +x /root/check.sh
 
 # 设置定时任务，每5分钟执行一次检查
 (crontab -l ; echo "*/3 * * * * /bin/bash /root/check.sh > /root/shutdown_debug.log 2>&1") | crontab -
