@@ -237,11 +237,11 @@ create_codex_config() {
     local context7_block=""
     
     if [ -n "$CONTEXT7_KEY" ]; then
-        context7_block=$(cat << EOF2
+        context7_block=$(cat << 'EOF2'
 
 [mcp_servers.context7]
 url = "https://mcp.context7.com/mcp"
-http_headers = { "CONTEXT7_API_KEY" = "$CONTEXT7_KEY" }
+http_headers = { "CONTEXT7_API_KEY" = "$CONTEXT7_API_KEY" }
 EOF2
 )
     fi
@@ -285,10 +285,14 @@ EOF
 # 设置环境变量的函数
 set_environment_variable() {
     local api_key="$1"
-    
+    local ctx7_key="$2"
+
     # 为当前会话导出
     export CODEX_API_KEY="$api_key"
-    
+    if [ -n "$ctx7_key" ]; then
+        export CONTEXT7_API_KEY="$ctx7_key"
+    fi
+
     # 检测shell并添加到相应的配置文件
     local shell_config=""
     local shell_name=""
@@ -345,6 +349,22 @@ set_environment_variable() {
             echo "set -x CODEX_API_KEY \"$api_key\"" >> "$shell_config"
             print_info "Added CODEX_API_KEY to $shell_config"
         fi
+
+        if [ -n "$ctx7_key" ]; then
+            if [ -f "$shell_config" ] && grep -q "set -x CONTEXT7_API_KEY" "$shell_config"; then
+                if [[ "$OSTYPE" == "darwin"* ]]; then
+                    sed -i '' "s/set -x CONTEXT7_API_KEY.*/set -x CONTEXT7_API_KEY \"$ctx7_key\"/" "$shell_config"
+                else
+                    sed -i "s/set -x CONTEXT7_API_KEY.*/set -x CONTEXT7_API_KEY \"$ctx7_key\"/" "$shell_config"
+                fi
+                print_info "Updated CONTEXT7_API_KEY in $shell_config"
+            else
+                echo "" >> "$shell_config"
+                echo "# Context7 的API密钥" >> "$shell_config"
+                echo "set -x CONTEXT7_API_KEY \"$ctx7_key\"" >> "$shell_config"
+                print_info "Added CONTEXT7_API_KEY to $shell_config"
+            fi
+        fi
     else
         # Bash/Zsh/sh语法
         if [ -f "$shell_config" ] && grep -q "export CODEX_API_KEY=" "$shell_config"; then
@@ -363,6 +383,22 @@ set_environment_variable() {
             echo "# Codex的API密钥" >> "$shell_config"
             echo "export CODEX_API_KEY=\"$api_key\"" >> "$shell_config"
             print_info "Added CODEX_API_KEY to $shell_config"
+        fi
+
+        if [ -n "$ctx7_key" ]; then
+            if [ -f "$shell_config" ] && grep -q "export CONTEXT7_API_KEY=" "$shell_config"; then
+                if [[ "$OSTYPE" == "darwin"* ]]; then
+                    sed -i '' "s/export CONTEXT7_API_KEY=.*/export CONTEXT7_API_KEY=\"$ctx7_key\"/" "$shell_config"
+                else
+                    sed -i "s/export CONTEXT7_API_KEY=.*/export CONTEXT7_API_KEY=\"$ctx7_key\"/" "$shell_config"
+                fi
+                print_info "Updated CONTEXT7_API_KEY in $shell_config"
+            else
+                echo "" >> "$shell_config"
+                echo "# Context7 的API密钥" >> "$shell_config"
+                echo "export CONTEXT7_API_KEY=\"$ctx7_key\"" >> "$shell_config"
+                print_info "Added CONTEXT7_API_KEY to $shell_config"
+            fi
         fi
     fi
     
@@ -391,6 +427,13 @@ show_current_settings() {
         print_info "CODEX_API_KEY: $masked_key"
     else
         print_info "CODEX_API_KEY: (not set)"
+    fi
+
+    if [ ! -z "$CONTEXT7_API_KEY" ]; then
+        local masked_ctx7="${CONTEXT7_API_KEY:0:8}...${CONTEXT7_API_KEY: -4}"
+        print_info "CONTEXT7_API_KEY: $masked_ctx7"
+    else
+        print_info "CONTEXT7_API_KEY: (not set)"
     fi
     
     echo "----------------------------------------"
@@ -430,6 +473,11 @@ main() {
                 print_warning "API key is required"
             fi
         done
+
+        # 获取可选的 Context7 密钥
+        if [ -z "$CONTEXT7_KEY" ]; then
+            read -p "Enter your Context7 API key (optional): " CONTEXT7_KEY
+        fi
     fi
     
     # 验证输入
@@ -452,6 +500,17 @@ main() {
         masked_key="${API_KEY:0:4}..."
     fi
     print_info "  API Key: $masked_key"
+
+    if [ -n "$CONTEXT7_KEY" ]; then
+        if [ ${#CONTEXT7_KEY} -gt 12 ]; then
+            masked_ctx7="${CONTEXT7_KEY:0:8}...${CONTEXT7_KEY: -4}"
+        else
+            masked_ctx7="${CONTEXT7_KEY:0:4}..."
+        fi
+        print_info "  Context7 API Key: $masked_ctx7"
+    else
+        print_info "  Context7 API Key: (not provided)"
+    fi
     echo ""
     
     # 备份现有配置
@@ -464,9 +523,12 @@ main() {
     fi
     
     # 设置环境变量
-    if ! set_environment_variable "$API_KEY"; then
+    if ! set_environment_variable "$API_KEY" "$CONTEXT7_KEY"; then
         print_warning "Failed to set environment variable automatically"
         print_info "Please set manually: export CODEX_API_KEY=\"$API_KEY\""
+        if [ -n "$CONTEXT7_KEY" ]; then
+            print_info "And: export CONTEXT7_API_KEY=\"$CONTEXT7_KEY\""
+        fi
     fi
     
     echo ""
@@ -491,8 +553,14 @@ main() {
     local current_shell=$(basename "$SHELL" 2>/dev/null || echo "bash")
     if [ "$current_shell" = "fish" ]; then
         print_info "  set -x CODEX_API_KEY \"$API_KEY\""
+        if [ -n "$CONTEXT7_KEY" ]; then
+            print_info "  set -x CONTEXT7_API_KEY \"$CONTEXT7_KEY\""
+        fi
     else
         print_info "  export CODEX_API_KEY=\"$API_KEY\""
+        if [ -n "$CONTEXT7_KEY" ]; then
+            print_info "  export CONTEXT7_API_KEY=\"$CONTEXT7_KEY\""
+        fi
     fi
     print_info "Or restart your terminal."
     
