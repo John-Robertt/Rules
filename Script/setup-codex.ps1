@@ -269,8 +269,8 @@ Codex Configuration Script (Windows)
 Usage: powershell -ExecutionPolicy Bypass -File setup-codex.ps1 [OPTIONS]
 
 Options:
-  -url <URL>        Set the base URL (default: $DefaultBaseUrl)
-  -key <KEY>        Set the API key
+  -url  <URL>       Set the base URL (default: $DefaultBaseUrl)
+  -key  <KEY>       Set the API key
   -ctx7 <KEY>       Set the Context7 API key (optional)
   -Show             Show current settings and exit
   -Help             Show this help message
