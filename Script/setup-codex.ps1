@@ -269,11 +269,11 @@ Codex Configuration Script (Windows)
 Usage: powershell -ExecutionPolicy Bypass -File setup-codex.ps1 [OPTIONS]
 
 Options:
-  -url <URL>      Set the base URL (default: $DefaultBaseUrl)
-  -key <KEY>       Set the API key
-  -ctx7 <KEY>  Set the Context7 API key (optional)
-  -Show               Show current settings and exit
-  -Help               Show this help message
+  -url <URL>        Set the base URL (default: $DefaultBaseUrl)
+  -key <KEY>        Set the API key
+  -ctx7 <KEY>       Set the Context7 API key (optional)
+  -Show             Show current settings and exit
+  -Help             Show this help message
 
 Examples:
   .\setup-codex.ps1 -url https://your-domain.tld -key your-api-key-here -ctx7 your-context7-key-here
@@ -349,6 +349,7 @@ env_key = "CODEX_API_KEY"
 [features]
 web_search_request = true
 enable_experimental_windows_sandbox = true
+
 "@
 
     # 如提供 Context7Key，则追加 MCP 配置段（不展开占位符）

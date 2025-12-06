@@ -168,9 +168,9 @@ Codex Configuration Script
 Usage: $0 [OPTIONS]
 
 Options:
-  --url URL        Set the base URL (default: $DEFAULT_BASE_URL)
-  --key KEY        Set the API key
-  --ctx7 KEY  Set Context7 MCP server API key
+  --url  URL       Set the base URL (default: $DEFAULT_BASE_URL)
+  --key  KEY       Set the API key
+  --ctx7 KEY       Set Context7 MCP server API key
   --show           Show current settings and exit
   --help           Show this help message
 
@@ -264,6 +264,7 @@ env_key = "CODEX_API_KEY"
 
 [features]
 web_search_request = true
+
 ${context7_block}
 EOF
 
