@@ -264,7 +264,6 @@ env_key = "CODEX_API_KEY"
 
 [features]
 web_search_request = true
-enable_experimental_windows_sandbox = true
 ${context7_block}
 EOF
 

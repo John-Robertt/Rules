@@ -342,7 +342,7 @@ disable_response_storage = true
 
 [model_providers.codex]
 name = "codex"
-base_url = "$BaseUrl"
+base_url = "$BaseUrl/v1"
 wire_api = "responses"
 env_key = "CODEX_API_KEY"
 
