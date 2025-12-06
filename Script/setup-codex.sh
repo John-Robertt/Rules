@@ -170,13 +170,13 @@ Usage: $0 [OPTIONS]
 Options:
   --url URL        Set the base URL (default: $DEFAULT_BASE_URL)
   --key KEY        Set the API key
-  --context7_key KEY  Set Context7 MCP server API key
+  --ctx7 KEY  Set Context7 MCP server API key
   --show           Show current settings and exit
   --help           Show this help message
 
 Examples:
   $0 --url https://your-domain.tld --key your-api-key-here
-  $0 --url https://your-domain.tld --key your-api-key-here --context7_key your-context7-api-key
+  $0 --url https://your-domain.tld --key your-api-key-here --ctx7 your-context7-api-key
   $0 --show
 
 Interactive mode (no arguments):
@@ -195,7 +195,7 @@ while [[ $# -gt 0 ]]; do
             API_KEY="$2"
             shift 2
             ;;
-        --context7_key)
+        --ctx7)
             CONTEXT7_KEY="$2"
             shift 2
             ;;
