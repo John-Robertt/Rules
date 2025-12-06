@@ -11,6 +11,7 @@ param(
 # 检查一行命令中的预设变量（使用不同的名称避免冲突）
 if (-not $BaseUrl -and (Test-Path Variable:url)) { $BaseUrl = $url }
 if (-not $ApiKey -and (Test-Path Variable:key)) { $ApiKey = $key }
+if (-not $Context7Key -and (Test-Path Variable:ctx7)) { $Context7Key = $ctx7 }
 
 # 配置
 $DefaultBaseUrl = "http://localhost:8080"
