@@ -238,7 +238,6 @@ create_codex_config() {
     
     if [ -n "$CONTEXT7_KEY" ]; then
         context7_block=$(cat << 'EOF2'
-
 [mcp_servers.context7]
 url = "https://mcp.context7.com/mcp"
 http_headers = { "CONTEXT7_API_KEY" = "$CONTEXT7_API_KEY" }
