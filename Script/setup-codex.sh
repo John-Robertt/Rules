@@ -252,7 +252,7 @@ EOF2
     # 创建config.toml
     cat > "$HOME/.codex/config.toml" << EOF
 model_provider = "codex"
-model = "gpt-5-codex"
+model = "gpt-5.1-codex-max"
 model_reasoning_effort = "high"
 disable_response_storage = true
 
@@ -260,8 +260,11 @@ disable_response_storage = true
 name = "codex"
 base_url = "${base_url}/v1"
 wire_api = "responses"
+env_key = "CODEX_API_KEY"
+
 [features]
 web_search_request = true
+enable_experimental_windows_sandbox = true
 ${context7_block}
 EOF
 
