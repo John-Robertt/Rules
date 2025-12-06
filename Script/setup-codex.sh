@@ -267,10 +267,14 @@ web_search_request = true
 ${context7_block}
 EOF
 
+#     cat > "$HOME/.codex/auth.json" << EOF
+# {
+#   "OPENAI_API_KEY": "$api_key"
+# }
+# EOF
+
     cat > "$HOME/.codex/auth.json" << EOF
-{
-  "OPENAI_API_KEY": "$api_key"
-}
+{}
 EOF
     
     print_success "Codex configuration written to: $HOME/.codex/config.toml"

@@ -361,10 +361,14 @@ http_headers = { "CONTEXT7_API_KEY" = "${CONTEXT7_KEY}" }
         $config += "`n$contextSection"
     }
 
+#     $auth = @"
+# {
+#   "OPENAI_API_KEY": "$ApiKey"
+# }
+# "@
+
     $auth = @"
-{
-  "OPENAI_API_KEY": "$ApiKey"
-}
+{}
 "@
     
     try {
