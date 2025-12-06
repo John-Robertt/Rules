@@ -269,14 +269,14 @@ Codex Configuration Script (Windows)
 Usage: powershell -ExecutionPolicy Bypass -File setup-codex.ps1 [OPTIONS]
 
 Options:
-  -BaseUrl <URL>      Set the base URL (default: $DefaultBaseUrl)
-  -ApiKey <KEY>       Set the API key
-  -Context7Key <KEY>  Set the Context7 API key (optional)
+  -url <URL>      Set the base URL (default: $DefaultBaseUrl)
+  -key <KEY>       Set the API key
+  -ctx7 <KEY>  Set the Context7 API key (optional)
   -Show               Show current settings and exit
   -Help               Show this help message
 
 Examples:
-  .\setup-codex.ps1 -BaseUrl https://your-domain.tld -ApiKey your-api-key-here
+  .\setup-codex.ps1 -url https://your-domain.tld -key your-api-key-here -ctx7 your-context7-key-here
   .\setup-codex.ps1 -Show
 
 Interactive mode (no arguments):
@@ -336,7 +336,7 @@ function New-Settings {
     # 主配置（需要变量展开）
     $config = @"
 model_provider = "codex"
-model = "gpt-5-codex"
+model = "gpt-5.1-codex-max"
 model_reasoning_effort = "high"
 disable_response_storage = true
 
@@ -344,6 +344,7 @@ disable_response_storage = true
 name = "codex"
 base_url = "$BaseUrl"
 wire_api = "responses"
+env_key = "CODEX_API_KEY"
 
 [features]
 web_search_request = true
