@@ -404,7 +404,6 @@ function Show-Settings {
     Write-Info "Current environment variables:"
     Write-Host "----------------------------------------"
     $codexKey = [Environment]::GetEnvironmentVariable("CODEX_API_KEY", [EnvironmentVariableTarget]::User)
-    $ctxKey = [Environment]::GetEnvironmentVariable("CONTEXT7_KEY", [EnvironmentVariableTarget]::User)
     
     if ($codexKey) {
         $maskedKey = if ($codexKey.Length -gt 12) { 
@@ -415,16 +414,6 @@ function Show-Settings {
         Write-Info "CODEX_API_KEY: $maskedKey"
     } else {
         Write-Info "CODEX_API_KEY: (not set)"
-    }
-    if ($ctxKey) {
-        $maskedCtxKey = if ($ctxKey.Length -gt 12) { 
-            "$($ctxKey.Substring(0, 8))...$($ctxKey.Substring($ctxKey.Length - 4))" 
-        } else { 
-            "$($ctxKey.Substring(0, [Math]::Min(4, $ctxKey.Length)))..." 
-        }
-        Write-Info "CONTEXT7_KEY: $maskedCtxKey"
-    } else {
-        Write-Info "CONTEXT7_KEY: (not set)"
     }
     Write-Host "----------------------------------------"
 }
@@ -549,20 +538,6 @@ function Main {
             Write-Info "  CODEX_API_KEY=$ApiKey"
         }
 
-        # 设置 Context7 环境变量（如提供）
-        if (-not [string]::IsNullOrWhiteSpace($Context7Key)) {
-            try {
-                [Environment]::SetEnvironmentVariable("CONTEXT7_KEY", $Context7Key, [EnvironmentVariableTarget]::User)
-                $env:CONTEXT7_KEY = $Context7Key
-                Write-Success "CONTEXT7_KEY environment variable set successfully"
-            }
-            catch {
-                Write-Warning "Failed to set CONTEXT7_KEY: $($_.Exception.Message)"
-                Write-Info "You may need to set it manually:"
-                Write-Info "  CONTEXT7_KEY=$Context7Key"
-            }
-        }
-        
         Write-Host ""
         Write-Info "Environment variable CODEX_API_KEY has been set"
         Write-Host ""
