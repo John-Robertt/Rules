@@ -237,10 +237,10 @@ create_codex_config() {
     local context7_block=""
     
     if [ -n "$CONTEXT7_KEY" ]; then
-        context7_block=$(cat << 'EOF2'
+        context7_block=$(cat << EOF2
 [mcp_servers.context7]
 url = "https://mcp.context7.com/mcp"
-http_headers = { "CONTEXT7_API_KEY" = "$CONTEXT7_API_KEY" }
+http_headers = { "CONTEXT7_API_KEY" = "${CONTEXT7_KEY}" }
 EOF2
 )
     fi
@@ -263,6 +263,9 @@ env_key = "CODEX_API_KEY"
 
 [features]
 web_search_request = true
+
+[mcp_servers.grep]
+url = "https://mcp.grep.app"
 
 ${context7_block}
 EOF

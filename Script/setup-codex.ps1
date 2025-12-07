@@ -350,15 +350,18 @@ env_key = "CODEX_API_KEY"
 web_search_request = true
 enable_experimental_windows_sandbox = true
 
+[mcp_servers.grep]
+url = "https://mcp.grep.app"
+
 "@
 
-    # 如提供 Context7Key，则追加 MCP 配置段（不展开占位符）
+    # 如提供 Context7Key，则追加 MCP 配置段
     if (-not [string]::IsNullOrWhiteSpace($Context7Key)) {
-        $contextSection = @'
+        $contextSection = @"
 [mcp_servers.context7]
 url = "https://mcp.context7.com/mcp"
-http_headers = { "CONTEXT7_API_KEY" = "${CONTEXT7_KEY}" }
-'@
+http_headers = { "CONTEXT7_API_KEY" = "$Context7Key" }
+"@
         $config += "`n$contextSection"
     }
 
