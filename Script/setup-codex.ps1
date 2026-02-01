@@ -347,7 +347,7 @@ wire_api = "responses"
 env_key = "CODEX_API_KEY"
 
 [features]
-web_search_request = true
+web_search = true
 enable_experimental_windows_sandbox = true
 
 [mcp_servers.grep]

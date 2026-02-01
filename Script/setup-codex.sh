@@ -260,7 +260,7 @@ wire_api = "responses"
 env_key = "CODEX_API_KEY"
 
 [features]
-web_search_request = true
+web_search = true
 
 [mcp_servers.grep]
 url = "https://mcp.grep.app"
