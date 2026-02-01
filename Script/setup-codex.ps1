@@ -336,9 +336,10 @@ function New-Settings {
     # 主配置（需要变量展开）
     $config = @"
 model_provider = "codex"
-model = "gpt-5.1-codex-max"
+model = "gpt-5.2"
 model_reasoning_effort = "high"
 disable_response_storage = true
+web_search = live
 
 [model_providers.codex]
 name = "codex"
@@ -347,7 +348,6 @@ wire_api = "responses"
 env_key = "CODEX_API_KEY"
 
 [features]
-web_search = true
 enable_experimental_windows_sandbox = true
 
 [mcp_servers.grep]
