@@ -250,9 +250,9 @@ EOF2
     cat > "$HOME/.codex/config.toml" << EOF
 model_provider = "codex"
 model = "gpt-5.2"
-model_reasoning_effort = "high"
+model_reasoning_effort = "xhigh"
 disable_response_storage = true
-web_search = live
+web_search = "live"
 
 [model_providers.codex]
 name = "codex"
