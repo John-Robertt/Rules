@@ -1,12 +1,12 @@
 version: 1
 
 template:
-  clash: "http://127.0.0.1:8000/materials/templates/clash.yaml"
-  shadowrocket: "http://127.0.0.1:8000/materials/templates/shadowrocket.conf"
-  surge: "http://127.0.0.1:8000/materials/templates/surge.conf"
-  quanx: "http://127.0.0.1:8000/materials/templates/quanx.conf"
+  clash: "https://raw.githubusercontent.com/John-Robertt/Rules/refs/heads/main/templates/clash.yaml"
+  shadowrocket: "https://raw.githubusercontent.com/John-Robertt/Rules/refs/heads/main/templates/shadowrocket.conf"
+  surge: "https://raw.githubusercontent.com/John-Robertt/Rules/refs/heads/main/templates/surge.conf"
+  quanx: "https://raw.githubusercontent.com/John-Robertt/Rules/refs/heads/main/templates/quanx.conf"
 
-public_base_url: "http://127.0.0.1:25500/sub"
+public_base_url: "https://sub.blili.net/sub"
 
 custom_proxy_group:
   - "🚀 快速选择`select`[]🇭🇰 Hong Kong[]🇸🇬 Singapore[]🇨🇳 Taiwan[]🇯🇵 Japan[]🇺🇲 United States[]🚀 手动切换[]DIRECT"
