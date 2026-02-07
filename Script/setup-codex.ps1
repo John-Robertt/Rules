@@ -347,9 +347,6 @@ base_url = "$BaseUrl/v1"
 wire_api = "responses"
 env_key = "CODEX_API_KEY"
 
-[features]
-enable_experimental_windows_sandbox = true
-
 [mcp_servers.grep]
 url = "https://mcp.grep.app"
 
