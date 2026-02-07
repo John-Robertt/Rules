@@ -1,10 +1,10 @@
 version: 1
 
 template:
-  clash: "https://raw.githubusercontent.com/John-Robertt/Rules/refs/heads/main/templates/clash.yaml"
-  shadowrocket: "https://raw.githubusercontent.com/John-Robertt/Rules/refs/heads/main/templates/shadowrocket.conf"
-  surge: "https://raw.githubusercontent.com/John-Robertt/Rules/refs/heads/main/templates/surge.conf"
-  quanx: "https://raw.githubusercontent.com/John-Robertt/Rules/refs/heads/main/templates/quanx.conf"
+  clash: "http://172.28.1.1/file/templates/clash.yaml"
+  shadowrocket: "http://172.28.1.1/file/templates/shadowrocket.conf"
+  surge: "http://172.28.1.1/file/templates/surge.conf"
+  quanx: "http://172.28.1.1/file/templates/quanx.conf"
 
 public_base_url: "https://sub.blili.net/sub"
 
