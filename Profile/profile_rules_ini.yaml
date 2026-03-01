@@ -33,7 +33,7 @@ custom_proxy_group:
   - "🇨🇳 Taiwan`select`(台|新北|彰化|TW|Taiwan)"
   - "🇯🇵 Japan`select`(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-尼]日|JP|Japan)"
   - "🇸🇬 Singapore`select`(新加坡|坡|狮城|SG|Singapore)"
-  - "🇺🇲 United States`select`([^-亚]美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|USA|United States)"
+  - "🇺🇲 United States`select`(美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|USA|United States)"
 
 ruleset:
   - "🎯 China-Websites,https://raw.githubusercontent.com/John-Robertt/Rules/main/Direct.list"
