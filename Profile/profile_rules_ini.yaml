@@ -38,7 +38,6 @@ custom_proxy_group:
 
 ruleset:
   - "🎯 China-Websites,https://raw.githubusercontent.com/John-Robertt/Rules/main/Direct.list"
-  - "🎯 China-Websites,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list"
   - "🛑 BanList,https://gcore.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockloon.list"
   - "🛑 BanList,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list"
   - "🛑 BanList,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list"
