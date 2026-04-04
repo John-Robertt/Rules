@@ -47,7 +47,6 @@ ruleset:
   - "✴️ Claude,https://raw.githubusercontent.com/John-Robertt/Rules/refs/heads/main/Claude.list"
   - "💬 OpenAI,https://raw.githubusercontent.com/John-Robertt/Rules/refs/heads/main/AI.list"
   - "💬 OpenAI,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list"
-  - "💬 OpenAI,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Claude.list"
   - "📺 Netflix,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Netflix.list"
   - "📺 DisneyPlus,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/DisneyPlus.list"
   - "📺 ViuTV,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/ViuTV.list"
